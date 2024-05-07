@@ -4,27 +4,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-
+import OnboardingScreen from './screens/OnboardingScreen';
+import Login from './screens/Login'
 import Home from './screens/Home';
-import Cadastro from './screens/Cadastro'
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
   <Stack.Navigator
-  screenOptions={{
-    headerStyle: {
-      backgroundColor: '#272727',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  }}
-  >
-    <Stack.Screen name="Home" component= {Home} />
-    <Stack.Screen name="Cadastro" component= {Cadastro} />
+  headerMode="none">
+    <Stack.Screen name="Oboarding" component= {OnboardingScreen}/>
+    <Stack.Screen name="Home" component= {Home} options={{headerShown:false}}/>
+    <Stack.Screen name="Login" component= {Login}/>
   </Stack.Navigator>
   )
 }

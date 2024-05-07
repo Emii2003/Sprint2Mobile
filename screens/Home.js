@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-// import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function Home({ navigation }) {
     return (
@@ -18,7 +17,7 @@ export default function Home({ navigation }) {
                 <Text> competitiva.</Text>
              </Text>
 
-             <TouchableOpacity style={styles.buttonDark} onPress={() => navigation.navigate('Cadastro')}>
+             <TouchableOpacity style={styles.buttonDark} onPress={() => navigation.navigate('Login')}>
                  <Text style={styles.buttonText}>Testar</Text>
              </TouchableOpacity>
          </main>

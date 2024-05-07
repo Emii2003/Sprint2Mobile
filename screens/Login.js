@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 
-export default function Cadastro({ navigation }) {
+export default function Login({ navigation }) {
     return (
         <View style={styles.container}>
 
