@@ -1,10 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import ButtonDark from '../components/ButtonDark';
 
 export default function Home({ navigation }) {
+  
+  const caminho = () =>{
+    navigation.navigate("Login")
+  }
+
     return (
         <View style={styles.container}>
-         <main style={styles.contentMain}>
+         <View style={styles.contentMain}>
             <Image
               style={styles.imgHome}
               source={require('../assets/Home/bro.svg')}  
@@ -16,11 +22,8 @@ export default function Home({ navigation }) {
                 {'\n'}
                 <Text> competitiva.</Text>
              </Text>
-
-             <TouchableOpacity style={styles.buttonDark} onPress={() => navigation.navigate('Login')}>
-                 <Text style={styles.buttonText}>Testar</Text>
-             </TouchableOpacity>
-         </main>
+            <ButtonDark name="Testar" caminho={caminho}/>
+         </View>
     </View>
   );
 }
@@ -29,10 +32,6 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     backgroundColor: '#272727',
-  },
-  header:{
-    display: 'flex',
-    justifyContent:  'flex-end',
   },
   contentMain: {
     display: 'flex',
