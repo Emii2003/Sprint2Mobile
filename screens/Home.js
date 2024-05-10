@@ -3,10 +3,11 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import ButtonDark from '../components/ButtonDark';
 
 export default function Home({ navigation }) {
-  
+
   const caminho = () =>{
     navigation.navigate("Login")
   }
+ 
 
     return (
         <View style={styles.container}>
@@ -22,7 +23,8 @@ export default function Home({ navigation }) {
                 {'\n'}
                 <Text> competitiva.</Text>
              </Text>
-            <ButtonDark name="Testar" caminho={caminho}/>
+
+             <ButtonDark name="Sair da sua conta" caminho={caminho}/>
          </View>
     </View>
   );

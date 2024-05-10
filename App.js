@@ -14,8 +14,8 @@ function MyStack() {
   return (
   <Stack.Navigator headerMode="none">
     <Stack.Screen name="Oboarding" component = {OnboardingScreen}/>
-    <Stack.Screen name="Home" component = {Home}/>
     <Stack.Screen name="Login" component = {Login}/>
+    <Stack.Screen name="Home" component = {Home}/>
   </Stack.Navigator>
   )
 }
