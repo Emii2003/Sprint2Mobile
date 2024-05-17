@@ -7,7 +7,7 @@ import { FaRegLightbulb } from "react-icons/fa";
 
 export default function OnboardingScreen({ navigation }) {
   const caminho = () =>{
-    navigation.navigate("Home")
+    navigation.navigate("Login")
   }
     return (
            <Onboarding style={styles.container} 

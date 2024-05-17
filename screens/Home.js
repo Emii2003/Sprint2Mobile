@@ -1,10 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import ButtonDark from '../components/ButtonDark';
+import ButtonClean from '../components/ButtonClean';
 
 export default function Home({ navigation }) {
 
-  const caminho = () =>{
+  const caminhoCadastro = () =>{
+    navigation.navigate("OnboardingScreen")
+  }
+
+  const caminhoLogin = () =>{
     navigation.navigate("Login")
   }
  
@@ -14,17 +19,14 @@ export default function Home({ navigation }) {
          <View style={styles.contentMain}>
             <Image
               style={styles.imgHome}
-              source={require('../assets/Home/bro.svg')}  
+              source={require('../assets/Home/pana.svg')}  
             />
              <Text style={styles.textMain}>
-                <Text > Melhore sua análise de mercado</Text>
-                {'\n'}
-                <Text> e conquiste inteligência</Text>
-                {'\n'}
-                <Text> competitiva.</Text>
+                <Text > Insight IA</Text>
              </Text>
 
-             <ButtonDark name="Sair da sua conta" caminho={caminho}/>
+             <ButtonDark name="Cadastre-se" caminho={caminhoCadastro}/>
+             <ButtonClean name="Login" caminho= {caminhoLogin}/>
          </View>
     </View>
   );
@@ -33,7 +35,7 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#272727',
+    backgroundColor: '#232222',
   },
   contentMain: {
     display: 'flex',
@@ -45,13 +47,13 @@ const styles = StyleSheet.create({
   textMain: {
     textAlign: 'center',
     color: '#fff',
-    fontWeight: 'bold',
     marginTop: '5vh',
     fontSize: '1.3rem',
+    fontStyle: "italic"
   },
   imgHome:{
-    width: 250,
-    height: 250,
+    width: 150,
+    height: 150,
   },
   buttonDark:{
     marginTop: '5vh',

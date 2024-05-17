@@ -3,9 +3,8 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'reac
 import Input from '../components/Input';
 import ButtonDark from '../components/ButtonDark';
 import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
 
-export default function Login({ navigation }) {
+export default function RecuperarSenha({ navigation }) {
   const caminho = () =>{
     navigation.navigate("Home")
   }
@@ -13,26 +12,23 @@ export default function Login({ navigation }) {
         <View style={styles.container}>
 
          <View style={styles.contentMain}>
-                <Title name="Digite seu E-mail"/>
+                <Title name="Recupere a senha"/>
                 <Input  
-                  placeholder="nome@example.com"
+                  placeholder="Senha antiga"
                 />
-                <Title name="Digite sua senha"/>
                 <Input  
-                    placeholder="*************"
+                    placeholder="Nova senha"
                 />
-                <ButtonDark name="Entrar" caminho={caminho}/>
-                <br></br>
-                <Subtitle name = "Esqueceu sua senha?" />
-                <Text style={styles.textsecondary} onPress={() =>
-                    navigation.navigate({name:'RecuperarSenha'})}>Recuperar Senha</Text>
-        </View>       
+                <ButtonDark name="Recuperar" caminho={caminho}/>
+         </View>
+
+                
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-    container:{
+  container:{
     flex: 1,
     backgroundColor: '#272727',
   },
@@ -46,9 +42,6 @@ const styles = StyleSheet.create({
   subtitleForm:{
     color: '#fff',
     marginBottom: 30
-  },
-  textsecondary:{
-    color: '#A03651'
   },
  
 });
