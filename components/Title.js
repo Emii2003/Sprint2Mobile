@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     title:{
       flex: 1,
         textAlign: 'left',
-
         fontSize: 20,
         fontWeight: 'bold',
         color: '#fff',

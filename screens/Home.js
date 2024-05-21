@@ -12,8 +12,7 @@ export default function Home({ navigation }) {
   const caminhoLogin = () =>{
     navigation.navigate("Login")
   }
- 
-
+  
     return (
         <View style={styles.container}>
          <View style={styles.contentMain}>

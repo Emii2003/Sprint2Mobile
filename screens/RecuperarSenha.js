@@ -1,28 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import Input from '../components/Input';
 import ButtonDark from '../components/ButtonDark';
 import Title from '../components/Title';
+import React, { useState } from 'react';
+import axios from 'axios'; 
 
 export default function RecuperarSenha({ navigation }) {
-  const caminho = () =>{
-    navigation.navigate("Home")
-  }
-    return (
-        <View style={styles.container}>
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-         <View style={styles.contentMain}>
-                <Title name="Recupere a senha"/>
-                <Input  
-                  placeholder="Senha antiga"
-                />
-                <Input  
-                    placeholder="Nova senha"
-                />
-                <ButtonDark name="Recuperar" caminho={caminho}/>
-         </View>
+  const handleRecuperarSenha = () => {
+    if (newPassword === '' || confirmPassword === '') {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+    } else if (newPassword !== confirmPassword) {
+      Alert.alert('Erro', 'As senhas não coincidem.');
+    } else {
+      // Fazer a requisição à API para recuperar a senha
+      axios.post('http://localhost:8000/usuario', {
+        newPassword: newPassword,
+        confirmPassword: confirmPassword
+      })
+      .then(response => {
+        Alert.alert('Sucesso', `Senha recuperada com sucesso: ${newPassword}`);
+        navigation.navigate('Home');
+      })
+      .catch(error => {
+        Alert.alert('Erro', 'Erro ao recuperar senha. Por favor, tente novamente.');
+      });
+    }
+  };
 
-                
+  return (
+    <View style={styles.container}>
+      <View style={styles.contentMain}>
+        <Title name="Recuperar senha"/>
+        <Input  
+          placeholder="Crie uma nova senha"
+          secureTextEntry={true}
+          value={newPassword}
+          onChangeText={setNewPassword} 
+        />
+        <Input  
+          placeholder="Confirmar nova senha"
+          secureTextEntry={true} 
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
+        <ButtonDark name="Recuperar" onPress={handleRecuperarSenha}/>
+      </View>
     </View>
   );
 }
@@ -43,5 +68,4 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginBottom: 30
   },
- 
 });
