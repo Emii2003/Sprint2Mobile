@@ -1,12 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import ButtonDark from '../components/ButtonDark';
 import ButtonClean from '../components/ButtonClean';
 
 export default function Home({ navigation }) {
 
   const caminhoCadastro = () =>{
-    navigation.navigate("OnboardingScreen")
+    navigation.navigate("RegistraUsuario")
   }
 
   const caminhoLogin = () =>{
@@ -24,8 +23,8 @@ export default function Home({ navigation }) {
                 <Text > Insight IA</Text>
              </Text>
 
-             <ButtonDark name="Cadastre-se" caminho={caminhoCadastro}/>
-             <ButtonClean name="Login" caminho= {caminhoLogin}/>
+             <ButtonDark name="Cadastre-se" onPress={caminhoCadastro}/>
+             <ButtonClean name="Login" onPress= {caminhoLogin}/>
          </View>
     </View>
   );
