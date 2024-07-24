@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import app from '../Firebase'; // Importação do Firebase
 
@@ -20,11 +20,16 @@ const RegistraUsuario = ({ navigation }) => {
         console.log('Handle Register called'); // Verifique se esta linha é exibida no console
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            await setDoc(doc(db, 'users', userCredential.user.uid), {
+            const user = userCredential.user;
+            
+            await setDoc(doc(db, 'dadosUsuarios', user.uid), {
                 email,
                 name,
             });
-            Alert.alert('Sucesso', 'Usuário criado com sucesso!');
+            // Envia email de verificação
+            await sendEmailVerification(user);
+
+            Alert.alert('Sucesso', 'Usuário criado com sucesso! Verifique seu e-mail para ativar sua conta.');
             navigation.navigate('Login'); // Redireciona para a tela de login
         } catch (error) {
             console.error('Erro de autenticação:', error.message);
@@ -54,10 +59,12 @@ const RegistraUsuario = ({ navigation }) => {
                 />
                 <ButtonDark name="Registrar" onPress={handleRegister} />
                 <Text style={styles.textsecondary} onPress={() => navigation.navigate('Login')}>
-                    Já tem uma conta? Entre aqui
+                    Já tem uma conta? 
+                    <Text style={styles.innerText}> Entre aqui </Text>
                 </Text>
                 <Text style={styles.textsecondary} onPress={() => navigation.navigate('RecuperarSenha')}>
-                    Esqueceu sua senha? Recupere aqui
+                    Esqueceu sua senha?
+                    <Text style={styles.innerText}> Recupere aqui </Text>
                 </Text>
             </View>       
         </View>
@@ -77,6 +84,9 @@ const styles = StyleSheet.create({
     },
     textsecondary: {
         marginTop: 20,
+        color: '#fff'
+    },
+    innerText: {
         color: '#A03651'
     }
 });

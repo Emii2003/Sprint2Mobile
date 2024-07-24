@@ -1,10 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const ButtonClean = props => {
-    return (
-        <TouchableOpacity style={styles.buttonDark} onPress={props.caminho}>
-            <Text style={styles.buttonText}>{props.name}</Text>
-        </TouchableOpacity>
+const ButtonClean = ({ name, onPress }) => {
+  return (
+      <TouchableOpacity style={styles.buttonDark} onPress={onPress}>
+          <Text style={styles.buttonText}>{name}</Text>
+      </TouchableOpacity>
   );
 }
 

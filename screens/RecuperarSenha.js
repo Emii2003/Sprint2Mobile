@@ -7,7 +7,7 @@ import Input from '../components/Input';
 import ButtonDark from '../components/ButtonDark';
 import Title from '../components/Title';
 
-export default function RecuperarSenha() {
+const RecuperarSenha = ({ navigation }) => {
     const [email, setEmail] = useState('');
 
     const auth = getAuth(app);
@@ -15,9 +15,10 @@ export default function RecuperarSenha() {
     const handlePasswordReset = async () => {
         try {
             await sendPasswordResetEmail(auth, email);
-            Alert.alert('Sucesso', 'E-mail de recuperação enviado!');
+            Alert.alert('Sucesso', 'E-mail de redefinição de senha enviado!');
+            navigation.navigate('Login'); // Redireciona para a tela de login
         } catch (error) {
-            console.error('Erro ao enviar e-mail de recuperação:', error.message);
+            console.error('Erro ao redefinir senha:', error.message);
             Alert.alert('Erro', error.message);
         }
     };
@@ -25,13 +26,20 @@ export default function RecuperarSenha() {
     return (
         <View style={styles.container}>
             <View style={styles.contentMain}>
-                <Title name="Digite seu E-mail"/>
-                <Input placeholder="example@gmail.com" value={email} onChangeText={setEmail} />
-                <ButtonDark name="Enviar e-mail de recuperação" onPress={handlePasswordReset} />
-            </View>
+                <Title name="Recuperar Senha"/>
+                <Input
+                    placeholder="Digite seu e-mail"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <ButtonDark name="Enviar e-mail de redefinição" onPress={handlePasswordReset} />
+                <Text style={styles.textsecondary} onPress={() => navigation.navigate('Login')}>
+                    Lembrou a senha? <Text style={styles.innerText}>Entre aqui</Text>
+                </Text>
+            </View>       
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -44,4 +52,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: '15vh',
     },
+    textsecondary: {
+        marginTop: 20,
+        color: '#fff'
+    },
+    innerText: {
+        color: '#A03651'
+    }
 });
+
+export default RecuperarSenha;
