@@ -5,7 +5,7 @@ import Home from './screens/Home';
 import Login from './screens/Login';
 import RegistraUsuario from './screens/RegistraUsuario';
 import RecuperarSenha from './screens/RecuperarSenha';
-import Teste from './screens/Teste'; // Importa a tela de saudação
+import Teste from './screens/Teste'; 
 
 const Stack = createStackNavigator();
 import './Firebase'; // Importação do arquivo de configuração do Firebase
@@ -23,6 +23,7 @@ function MyStack() {
 }
 
 export default function App() {
+  
   return (
     <NavigationContainer>
       <MyStack />

@@ -19,9 +19,8 @@ export default function Home({ navigation }) {
               style={styles.imgHome}
               source={require('../assets/Home/pana.svg')}  
             />
-             <Text style={styles.textMain}>
-                <Text > Insight IA</Text>
-             </Text>
+            <Text style={styles.textMain}> Insight <Text style={styles.innerText}>IA</Text>
+            </Text>
 
              <ButtonDark name="Cadastre-se" onPress={caminhoCadastro}/>
              <ButtonClean name="Login" onPress= {caminhoLogin}/>
@@ -48,6 +47,9 @@ const styles = StyleSheet.create({
     marginTop: '5vh',
     fontSize: '1.3rem',
     fontStyle: "italic"
+  },
+  innerText: {
+    color: '#A03651'
   },
   imgHome:{
     width: 150,

@@ -10,7 +10,7 @@ const ButtonDark = ({ name, onPress }) => {
 
 const styles = StyleSheet.create({
     buttonDark: {
-        marginTop: '5vh',
+        marginTop: 50,
         backgroundColor: '#A03651',
         width: '80vw',
         height: '5vh',

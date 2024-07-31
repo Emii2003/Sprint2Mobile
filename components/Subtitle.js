@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text} from 'react-native';
 
 const Subtitle = props => {
     return (
@@ -13,6 +13,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'light',
         color: '#fff',
-        marginBottom: 20
+        marginBottom: 15
       },
 });
