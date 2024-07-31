@@ -1,6 +1,20 @@
-# Sprint2Mobile
-Diagrama demonstrando a integração/comunicação do aplicativo com API/banco de dados e sistemas externos. (30 pontos)
 
-Programação visual de 5 telas do aplicativo funcional. (40 pontos)
+# InisightIA
 
-Realizar chamadas de uma API (login, esqueceu senha e ao menos 3 telas fazendo requisições). (30 pontos)
+Nosso projeto visa em criar uma aplicação para as empresas de pequeno e médio porte. Conta com duas funcionalidades principais, nossa análise de sentimento que reunirá os principais comentários e feedbacks de empresas concorrentes e nossa análise interna que fornecerá insights valiosos de como impulsionar o crescimento empresarial. 
+
+
+
+
+## Instalação
+
+Utilizando o VScode, clone o projeto, abra e terminal e execute os seguintes passos
+
+```bash
+  npm install 
+  npx expo start
+```   
+
+## Figma
+https://www.figma.com/design/9s0ZOoMjLGhcEPiYdnWToi/Untitled?node-id=138-3&t=LJO2AzvwpGYMBlNt-0
+
