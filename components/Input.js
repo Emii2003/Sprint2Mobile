@@ -4,7 +4,7 @@ import React from 'react';
 const Input = props => {
     return (
         <View>
-            <TextInput
+            <TextInput 
                 style={[styles.input, props.style]}
                 placeholder={props.placeholder}
                 value={props.value}
@@ -24,11 +24,14 @@ export default Input;
 const styles = StyleSheet.create({
     input: {
         backgroundColor: '#232222',
-        width: '80vw',
-        height: 35,
+        width: 300,
+        height: 60,
         borderRadius: 8,
-        padding: 25,
+        padding: 10,
         marginBottom: 10,
         color: '#DC8AA8'
     },
+    placeholder: {
+        color: "#fff"
+    }
 });

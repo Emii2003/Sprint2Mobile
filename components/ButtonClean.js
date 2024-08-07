@@ -13,14 +13,14 @@ export default ButtonClean;
 
 const styles = StyleSheet.create({
   buttonDark:{
-    marginTop: '5vh',
-    width: '80vw',
-    height: '5vh',
+    marginTop: 5,
+    width: 300,
+    height: 50,
     borderWidth: 2,
     borderColor: "#DC8AA8",
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: '8px'
+    borderRadius: 8
   },
   buttonText:{
     color: '#DC8AA8',

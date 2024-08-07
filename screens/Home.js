@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   contentMain: {
     display: 'flex',
-    marginTop: '15vh',
+    marginTop: 15,
     alignItems: 'center', 
     justifyContent: 'center', 
     flexDirection: 'column'
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
   textMain: {
     textAlign: 'center',
     color: '#fff',
-    marginTop: '5vh',
-    fontSize: '1.3rem',
+    marginTop: 5,
+    fontSize: 30,
     fontStyle: "italic"
   },
   innerText: {
@@ -56,14 +56,14 @@ const styles = StyleSheet.create({
     height: 150,
   },
   buttonDark:{
-    marginTop: '5vh',
+    marginTop: 5,
     backgroundColor: '#A03651',
-    width: '80vw',
-    height: '5vh',
+    width: 80,
+    height: 5,
     justifyContent: 'center',
     alignItems: 'center',
     borderStyle: 'none',
-    borderRadius: '8px'
+    borderRadius: 8
   },
   buttonText:{
     color: '#fff',

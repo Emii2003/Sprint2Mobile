@@ -10,13 +10,13 @@ const ButtonDark = ({ name, onPress }) => {
 
 const styles = StyleSheet.create({
     buttonDark: {
-        marginTop: 50,
+        // marginTop: 300,
         backgroundColor: '#A03651',
-        width: '80vw',
-        height: '5vh',
+        width: 300,
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        borderStyle: 'none',
+        // borderStyle: 'none',
         borderRadius: 8, 
     },
     buttonText: {

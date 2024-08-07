@@ -6,13 +6,17 @@ import Login from './screens/Login';
 import RegistraUsuario from './screens/RegistraUsuario';
 import RecuperarSenha from './screens/RecuperarSenha';
 import Teste from './screens/Teste'; 
+import 'react-native-gesture-handler';
+import { LogBox } from 'react-native'; // Importar LogBox para versões mais recentes
 
+// Desativa todos os warnings
+LogBox.ignoreAllLogs(); // Ignora todos os logs
 const Stack = createStackNavigator();
 import './Firebase'; // Importação do arquivo de configuração do Firebase
 
 function MyStack() {
   return (
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator headerShown="false">
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="RegistraUsuario" component={RegistraUsuario} />
       <Stack.Screen name="Login" component={Login} />

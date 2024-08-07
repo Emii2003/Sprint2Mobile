@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Alert, Picker } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import app from '../Firebase'; // Importação do Firebase
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '15vh',
+        marginTop: 15,
     },
     campoCadastro: {
         marginBottom: 15
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
     },
     pickerContainer: {
         backgroundColor: '#232222',
-            width: '80vw',
+        width: 300,
         height: 50,
         borderRadius: 8,
         paddingHorizontal: 10,

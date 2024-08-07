@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '15vh',
+        marginTop: 15,
     },
     textsecondary: {
         marginTop: 20,
