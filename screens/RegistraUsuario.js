@@ -5,10 +5,10 @@ import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from '
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import app from '../Firebase'; // Importação do Firebase
 
-import Input from '../components/Input';
-import ButtonDark from '../components/ButtonDark';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle'
+import CampoTexto from '../components/CampoTexto';
+import Botao from '../components/Botao';
+import Titulo from '../components/Titulo'; 
+import Subtitulo from '../components/Subtitulo';
 
 const RegistraUsuario = ({ navigation }) => {
     const [step, setStep] = useState(1);
@@ -73,10 +73,10 @@ const RegistraUsuario = ({ navigation }) => {
             <View style={styles.contentMain}>
                 {step === 1 ? (
                     <>
-                        <Title name="Dados da Empresa"/>
+                        <Titulo style={styles.title}>Dados da Empresa</Titulo>
                         <View style={styles.campoCadastro}>
-                            <Subtitle name="Nome da Empresa"></Subtitle>
-                            <Input
+                            <Subtitulo name="Nome da Empresa" />
+                            <CampoTexto
                                 placeholder="Nome da Empresa"
                                 value={nomeEmpresa}
                                 onChangeText={setNomeEmpresa}
@@ -84,7 +84,7 @@ const RegistraUsuario = ({ navigation }) => {
                         </View>
 
                         <View style={styles.campoCadastro}>
-                            <Subtitle name="Categoria Empresa"></Subtitle>
+                            <Subtitulo name="Categoria Empresa" />
                             <View style={styles.pickerContainer}>
                                 <Picker
                                     selectedValue={categoriaEmpresa}
@@ -100,75 +100,90 @@ const RegistraUsuario = ({ navigation }) => {
                                 </Picker>
                             </View>
                         </View>
-                        <ButtonDark name="Próximo" onPress={() => handleNextStep(1)} />
+                        <Botao
+                            name="Próximo"
+                            onPress={() => handleNextStep(1)}
+                            backgroundColor="#A03651"
+                            textColor="#fff"
+                        />
                     </>
                 ) : step === 2 ? (
                     <>
-                        <Title name="Seus Dados"/>
+                        <Titulo style={styles.title}>Seus Dados</Titulo>
                         <View style={styles.campoCadastro}>
-                            <Subtitle name="Seu nome"></Subtitle>
-                            <Input
-                                placeholder="Nome"
+                            <Subtitulo name="Seu Nome" />
+                            <CampoTexto
+                                placeholder="Digite seu nome"
                                 value={name}
                                 onChangeText={setName}
                             />
                         </View>
                         <View style={styles.campoCadastro}>
-                            <Subtitle name="Seu email?"></Subtitle>
-                            <Input
+                            <Subtitulo name="Seu Email" />
+                            <CampoTexto
                                 placeholder="example@gmail.com"
                                 value={email}
                                 onChangeText={setEmail}
                             />
                         </View>
-                        <ButtonDark name="Próximo" onPress={() => handleNextStep(2)} />
-                        <Text style={styles.textsecondary} onPress={() => setStep(1)}>
+                        <Botao
+                            name="Próximo"
+                            onPress={() => handleNextStep(2)}
+                            backgroundColor="#A03651"
+                            textColor="#fff"
+                        />
+                        <Subtitulo style={styles.textSecondary} onPress={() => setStep(1)}>
                             Voltar
-                        </Text>
+                        </Subtitulo>
                     </>
                 ) : (
                     <>
-                        <Title name="Defina sua Senha"/>
+                        <Titulo style={styles.title}>Defina sua Senha</Titulo>
                         <View style={styles.campoCadastro}>
-                            <Subtitle name="Senha"></Subtitle>
-                            <Input
+                            <Subtitulo name="Senha" />
+                            <CampoTexto
                                 placeholder="Senha"
-                                secureTextEntry={true}
                                 value={password}
                                 onChangeText={setPassword}
+                                secureTextEntry
                             />
                         </View>
                         <View style={styles.campoCadastro}>
-                            <Subtitle name="Confirmar senha"></Subtitle>
-                            <Input
-                                placeholder="Confirme a Senha"
-                                secureTextEntry={true}
+                            <Subtitulo name="Confirmar Senha" />
+                            <CampoTexto
+                                placeholder="Confirmar senha"
                                 value={confirmPassword}
                                 onChangeText={setConfirmPassword}
+                                secureTextEntry
                             />
                         </View>
-                        <ButtonDark name="Registrar" onPress={handleRegister} />
-                        <Text style={styles.textsecondary} onPress={() => setStep(2)}>
+                        <Botao
+                            name="Registrar"
+                            onPress={handleRegister}
+                            backgroundColor="#A03651"
+                            textColor="#fff"
+                        />
+                        <Subtitulo style={styles.textSecondary} onPress={() => setStep(2)}>
                             Voltar
-                        </Text>
+                        </Subtitulo>
                     </>
                 )}
                 {step === 3 && (
                     <>
-                        <Text style={styles.textsecondary} onPress={() => navigation.navigate('Login')}>
-                            Já tem uma conta? 
+                        <Subtitulo style={styles.textSecondary} onPress={() => navigation.navigate('Login')}>
+                            Já tem uma conta?
                             <Text style={styles.innerText}> Entre aqui </Text>
-                        </Text>
-                        <Text style={styles.textsecondary} onPress={() => navigation.navigate('RecuperarSenha')}>
+                        </Subtitulo>
+                        <Subtitulo style={styles.textSecondary} onPress={() => navigation.navigate('RecuperarSenha')}>
                             Esqueceu sua senha?
                             <Text style={styles.innerText}> Recupere aqui </Text>
-                        </Text>
+                        </Subtitulo>
                     </>
                 )}
-            </View>       
+            </View>
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -176,32 +191,34 @@ const styles = StyleSheet.create({
         backgroundColor: '#272727',
     },
     contentMain: {
-        display: 'flex',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 15,
+        paddingHorizontal: 20,
+    },
+    title: {
+        marginBottom: 20,
     },
     campoCadastro: {
-        marginBottom: 15
+        marginBottom: 15,
+        width: '100%', // Garantir que o campo e o picker ocupem toda a largura disponível
     },
-    textsecondary: {
+    textSecondary: {
         marginTop: 20,
-        color: '#fff'
     },
     innerText: {
-        color: '#A03651'
+        color: '#A03651',
     },
     pickerContainer: {
         backgroundColor: '#232222',
-        width: 300,
-        height: 50,
         borderRadius: 8,
-        paddingHorizontal: 10,
-        justifyContent: 'center',
+        overflow: 'hidden', // Garante que as bordas arredondadas funcionem
+        width: '100%',
         marginBottom: 10,
     },
     picker: {
-        color: '#DC8AA8',
+        height: 50,
+        color: '#DC8AA8', // Cor do texto do Picker
     },
 });
 

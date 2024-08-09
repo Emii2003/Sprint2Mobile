@@ -16,7 +16,7 @@ import './Firebase'; // Importação do arquivo de configuração do Firebase
 
 function MyStack() {
   return (
-    <Stack.Navigator headerShown="false">
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="RegistraUsuario" component={RegistraUsuario} />
       <Stack.Screen name="Login" component={Login} />

@@ -4,9 +4,10 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import app from '../Firebase'; // Importação do Firebase
 
-import Input from '../components/Input';
-import ButtonDark from '../components/ButtonDark';
-import Title from '../components/Title';
+import CampoTexto from '../components/CampoTexto';
+import Botao from '../components/Botao';
+import Titulo from '../components/Titulo';
+import Subtitulo from '../components/Subtitulo';
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
@@ -19,19 +20,19 @@ export default function Login({ navigation }) {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-             // Busca o nome do usuário do Firestore
-             const db = getFirestore(app);
-             const userDoc = await getDoc(doc(db, 'dadosUsuarios', user.uid));
-             const userData = userDoc.data();
+            // Busca o nome do usuário do Firestore
+            const db = getFirestore(app);
+            const userDoc = await getDoc(doc(db, 'dadosUsuarios', user.uid));
+            const userData = userDoc.data();
 
-             if (user.emailVerified) {
-              navigation.replace('Teste', { user: { ...user, name: userData.name } });
-              Alert.alert('Sucesso', 'Usuário logado com sucesso!');
-          } else {
-              Alert.alert('Erro', 'Por favor, verifique seu e-mail antes de fazer login.');
-              auth.signOut(); // Desconecta o usuário
-          }
-            
+            if (user.emailVerified) {
+                navigation.replace('Teste', { user: { ...user, name: userData.name } });
+                Alert.alert('Sucesso', 'Usuário logado com sucesso!');
+            } else {
+                Alert.alert('Erro', 'Por favor, verifique seu e-mail antes de fazer login.');
+                auth.signOut(); // Desconecta o usuário
+            }
+
         } catch (error) {
             console.error('Erro de autenticação:', error.message);
             Alert.alert('Erro', error.message);
@@ -41,29 +42,36 @@ export default function Login({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.contentMain}>
-                <View>
-                    <Title name="Digite seu E-mail"/>
-                    <Input placeholder="example@gmail.com" value={email} onChangeText={setEmail} />
+                <Titulo style={styles.title}>Digite seu E-mail</Titulo>
+                <CampoTexto
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <Titulo style={styles.title}>Digite sua Senha</Titulo>
+                <CampoTexto
+                    placeholder="Senha"
+                    secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
+                />
+                <Botao
+                    name="Entrar"
+                    onPress={handleLogin}
+                    backgroundColor="#A03651"
+                    textColor="#fff"
+                />
+                <View style={styles.textContainer}>
+                    <Subtitulo style={styles.textSecondary} onPress={() => navigation.navigate('RegistraUsuario')}>
+                        Ainda não tem uma conta?
+                        <Text style={styles.innerText}> Registre-se aqui </Text>
+                    </Subtitulo>
+                    <Subtitulo style={styles.textSecondary} onPress={() => navigation.navigate('RecuperarSenha')}>
+                        Esqueceu sua senha?
+                        <Text style={styles.innerText}> Recupere aqui </Text>
+                    </Subtitulo>
                 </View>
-                <View>
-                    <Title name="Digite sua senha"/>
-                    <Input  
-                        placeholder="*************"
-                        secureTextEntry={true}
-                        value={password}
-                        onChangeText={setPassword}
-                    />
-                </View>
-                <ButtonDark name="Entrar" onPress={handleLogin} />
-                <Text style={styles.textsecondary} onPress={() => navigation.navigate('RegistraUsuario')}>
-                    Ainda não tem uma conta? 
-                    <Text style={styles.innerText}> Registre-se aqui </Text>
-                </Text>
-                <Text style={styles.textsecondary} onPress={() => navigation.navigate('RecuperarSenha')}>
-                    Esqueceu sua senha? 
-                    <Text style={styles.innerText}> Recupere aqui </Text>
-                </Text>
-            </View>       
+            </View>
         </View>
     );
 }
@@ -74,16 +82,24 @@ const styles = StyleSheet.create({
         backgroundColor: '#272727',
     },
     contentMain: {
-        display: 'flex',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 100,
+        paddingHorizontal: 20,
     },
-    textsecondary: {
+    title: {
+        marginBottom: 10,
+        color: '#fff',
+    },
+    textContainer: {
         marginTop: 20,
-        color: '#fff'
+        alignItems: 'center',
+    },
+    textSecondary: {
+        color: '#fff',
+        marginBottom: 10,
     },
     innerText: {
-      color: '#A03651'
-  }
+        color: '#A03651',
+    },
 });

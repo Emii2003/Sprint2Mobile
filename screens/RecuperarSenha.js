@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, Alert } from 'react-native';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import app from '../Firebase'; // Importação do Firebase
 
-import Input from '../components/Input';
-import ButtonDark from '../components/ButtonDark';
-import Title from '../components/Title';
+import CampoTexto from '../components/CampoTexto';
+import Botao from '../components/Botao';
+import Subtitulo from '../components/Subtitulo'; // Componente atualizado
 
 const RecuperarSenha = ({ navigation }) => {
     const [email, setEmail] = useState('');
@@ -26,17 +26,22 @@ const RecuperarSenha = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.contentMain}>
-                <Title name="Recuperar Senha"/>
-                <Input
+                <Subtitulo name="Digite seu e-mail" />
+                <CampoTexto
                     placeholder="Digite seu e-mail"
                     value={email}
                     onChangeText={setEmail}
                 />
-                <ButtonDark name="Enviar e-mail de redefinição" onPress={handlePasswordReset} />
-                <Text style={styles.textsecondary} onPress={() => navigation.navigate('Login')}>
+                <Botao
+                    name="Enviar e-mail de redefinição"
+                    onPress={handlePasswordReset}
+                    backgroundColor="#A03651"
+                    textColor="#fff"
+                />
+                <Text style={styles.textSecondary} onPress={() => navigation.navigate('Login')}>
                     Lembrou a senha? <Text style={styles.innerText}>Entre aqui</Text>
                 </Text>
-            </View>       
+            </View>
         </View>
     );
 };
@@ -47,18 +52,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#272727',
     },
     contentMain: {
-        display: 'flex',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 15,
+        paddingHorizontal: 20,
     },
-    textsecondary: {
+    textSecondary: {
         marginTop: 20,
-        color: '#fff'
+        color: '#fff',
     },
     innerText: {
-        color: '#A03651'
-    }
+        color: '#A03651',
+    },
 });
 
 export default RecuperarSenha;
